@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Doctors')
+@section('title', 'Doctors Schedules')
 
 @push('style')
     <!-- CSS Libraries -->
@@ -11,14 +11,14 @@
     <div class="main-content">
         <section class="section">
             <div class="section-header">
-                <h1>Doctor</h1>
+                <h1>Doctor Schedules</h1>
                 <div class="section-header-button">
-                    <a href="{{ route('doctors.create') }}" class="btn btn-primary">Add New</a>
+                    <a href="{{ route('doctor_schedule.create') }}" class="btn btn-primary">Add New</a>
                 </div>
                 <div class="section-header-breadcrumb">
                     <div class="breadcrumb-item active"><a href="#">Dashboard</a></div>
                     <div class="breadcrumb-item"><a href="#">Doctor</a></div>
-                    <div class="breadcrumb-item">All Doctor</div>
+                    <div class="breadcrumb-item">All Doctor Schedules</div>
                 </div>
             </div>
             <div class="section-body">
@@ -49,7 +49,7 @@
                                     </select>
                                 </div>
                                 <div class="float-right">
-                                    <form method="GET" action="{{ route('doctors.index') }}">
+                                    <form method="GET" action="{{ route('doctor_schedule.index') }}">
                                         <div class="input-group">
                                             <input type="text" class="form-control" placeholder="Search" name="name">
                                             <div class="input-group-append">
@@ -65,40 +65,26 @@
                                     <table class="table-striped table">
                                         <tr>
                                             <th>Name</th>
-                                            <th>Specialist</th>
-                                            <th>Phone</th>
-                                            <th>Email</th>
-                                            <th>Photo</th>
-                                            {{-- <th>Address</th> --}}
-                                            <th>SIP</th>
-                                            {{-- <th>Create</th> --}}
+                                            <th>Day</th>
+                                            <th>Time</th>
+                                            <th>Note</th>
                                             <th class="justify-content-center">Action</th>
                                         </tr>
-                                        @foreach ($doctors as $doctor)
+                                        @foreach ($doctorschedule as $schedule)
                                             <tr>
-                                                <td>{{ $doctor->doctor_name }}</td>
-                                                <td>{{ $doctor->doctor_specialis }}</td>
-                                                <td>{{ $doctor->doctor_phone }}</td>
-                                                <td>{{ $doctor->doctor_email }}</td>
-                                                <td>
-                                                    @if ($doctor->doctor_photo)
-                                                        <img src="{{ asset('' . $doctor->doctor_photo) }}" alt=""
-                                                            width="100px" class="img-thumbnail">
-                                                    @else
-                                                        <span class="badge badge-danger">No Image</span>
-                                                    @endif
-                                                </td>
-                                                {{-- <td>{{ $doctor->doctor_address }}</td> --}}
-                                                <td>{{ $doctor->doctor_sip }}</td>
-                                                {{-- <td>{{ $doctor->created_at }}</td> --}}
+                                                <td>{{ $schedule->doctor->doctor_name }}</td>
+                                                <td>{{ $schedule->day }}</td>
+                                                <td>{{ $schedule->time }}</td>
+                                                <td>{{ $schedule->note }}</td>
+
                                                 <td>
                                                     <div class="d-flex justify-content-center">
-                                                        <a href='{{ route('doctors.edit', $doctor->id) }}'
+                                                        <a href='{{ route('doctor_schedule.edit', $schedule->id) }}'
                                                             class="btn btn-sm btn-info btn-icon">
                                                             <i class="fas fa-edit"></i>
                                                             Edit
                                                         </a>
-                                                        <form action="{{ route('doctors.destroy', $doctor->id) }}"
+                                                        <form action="{{ route('doctor_schedule.destroy', $schedule->id) }}"
                                                             method="POST" class="ml-2">
                                                             <input type="hidden" name="_method" value="DELETE" />
                                                             <input type="hidden" name="_token"
@@ -108,32 +94,6 @@
                                                                 data-bs-toggle="modal" data-bs-target="#modal">
                                                                 <i class="fas fa-times"></i> Delete
                                                             </button>
-
-                                                            <!-- Modal -->
-                                                            {{-- <div class="modal fade" id="modal" tabindex="-1"
-                                                                aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                                                <div class="modal-dialog">
-                                                                    <div class="modal-content">
-                                                                        <div class="modal-header">
-                                                                            <h1 class="modal-title fs-5"
-                                                                                id="exampleModalLabel">Modal title</h1>
-                                                                            <button type="button" class="btn-close"
-                                                                                data-bs-dismiss="modal"
-                                                                                aria-label="Close"></button>
-                                                                        </div>
-                                                                        <div class="modal-body">
-                                                                            ...
-                                                                        </div>
-                                                                        <div class="modal-footer">
-                                                                            <button type="button" class="btn btn-secondary"
-                                                                                data-bs-dismiss="modal">Close</button>
-                                                                            <button type="button"
-                                                                                class="btn btn-primary">Save
-                                                                                changes</button>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div> --}}
                                                         </form>
                                                     </div>
                                                 </td>
@@ -144,7 +104,7 @@
                                 </div>
 
                                 <div class="float-right" style="">
-                                    {{ $doctors->withQueryString()->links() }}
+                                    {{ $doctorschedule->withQueryString()->links() }}
                                 </div>
                             </div>
                         </div>

@@ -21,7 +21,7 @@ class DoctorController extends Controller
     //create
     public function create()
     {
-        return view('pages.doctors.create');
+        return view('pages.doctor.create');
     }
 
     //store
@@ -29,19 +29,29 @@ class DoctorController extends Controller
     {
         $request->validate([
             'doctor_name' => 'required',
-            'doctor_specialist' => 'required',
+            'doctor_specialis' => 'required',
             'doctor_phone' => 'required',
             'doctor_email' => 'required|email',
-            'sip' => 'required',
+            'doctor_sip' => 'required',
+            'id_ihs'=> 'required',
+            'nik'=> 'required',
         ]);
 
-        DB::table('doctors')->insert([
-            'doctor_name' => $request->doctor_name,
-            'doctor_specialist' => $request->doctor_specialist,
-            'doctor_phone' => $request->doctor_phone,
-            'doctor_email' => $request->doctor_email,
-            'doctor_sip' => $request->doctor_sip,
-        ]);
+        $doctor = new Doctor();
+        $doctor->doctor_name = $request->doctor_name;
+        $doctor->doctor_specialis = $request->doctor_specialis;
+        $doctor->doctor_address = $request->doctor_address;
+        $doctor->doctor_email = $request->doctor_email;
+        $doctor->doctor_phone = $request->doctor_phone;
+        $doctor->doctor_sip = $request->doctor_sip;
+        $doctor->save();
+
+        if ($request->hasFile('doctor_photo')) {
+            $image = $request->file('doctor_photo');
+            $image->storeAs('public/doctors', $doctor->id . '.' . $image->getClientOriginalExtension());
+            $doctor->doctor_photo = 'storage/doctors/' . $doctor->id . '.' . $image->getClientOriginalExtension();
+            $doctor->save();
+        }
 
         return redirect()->route('doctors.index')->with('success', 'Doctor created successfully.');
     }
@@ -57,7 +67,7 @@ class DoctorController extends Controller
     public function edit($id)
     {
         $doctor = DB::table('doctors')->where('id', $id)->first();
-        return view('pages.doctors.edit', compact('doctor'));
+        return view('pages.doctor.edit', compact('doctor'));
     }
 
     //update
@@ -70,6 +80,14 @@ class DoctorController extends Controller
             'doctor_email' => 'required|email',
             'doctor_sip' => 'required',
         ]);
+
+        $doctor = Doctor::find($id);
+        $doctor->name = $request->doctor_name;
+        $doctor->specialis = $request->doctor_specialis;
+        $doctor->email = $request->doctor_email;
+        $doctor->phone = $request->doctor_phone;
+        $doctor->sip = $request->doctor_sip;
+        $doctor->save();
 
         DB::table('doctors')->where('id', $id)->update([
             'doctor_name' => $request->doctor_name,
