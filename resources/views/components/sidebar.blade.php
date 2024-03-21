@@ -25,6 +25,11 @@
                         <a class="nav-link" href="{{ route('doctors.index') }}">Doctor</a>
                     </li>
                 </ul>
+                <ul class="dropdown-menu">
+                    <li class=''>
+                        <a class="nav-link" href="{{ route('doctor_schedule.index') }}">Doctor Schedule</a>
+                    </li>
+                </ul>
             </li>
         </ul>
     </aside>
