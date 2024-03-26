@@ -66,7 +66,9 @@ class DoctorController extends Controller
     //edit
     public function edit($id)
     {
-        $doctor = DB::table('doctors')->where('id', $id)->first();
+        $doctor = Doctor::find($id);
+
+        // $doctor = DB::table('doctors')->where('id', $id)->first();
         return view('pages.doctor.edit', compact('doctor'));
     }
 
@@ -81,13 +83,14 @@ class DoctorController extends Controller
             'doctor_sip' => 'required',
         ]);
 
-        $doctor = Doctor::find($id);
-        $doctor->name = $request->doctor_name;
-        $doctor->specialis = $request->doctor_specialis;
-        $doctor->email = $request->doctor_email;
-        $doctor->phone = $request->doctor_phone;
-        $doctor->sip = $request->doctor_sip;
-        $doctor->save();
+        // $doctor = Doctor::find($id);
+        // $doctor->doctor_name = $request->doctor_name;
+        // $doctor->doctor_specialis = $request->doctor_specialis;
+        // $doctor->doctor_address = $request->doctor_address;
+        // $doctor->doctor_email = $request->doctor_email;
+        // $doctor->doctor_phone = $request->doctor_phone;
+        // $doctor->doctor_sip = $request->doctor_sip;
+        // $doctor->save();
 
         DB::table('doctors')->where('id', $id)->update([
             'doctor_name' => $request->doctor_name,

@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Add Doctor')
+@section('title', 'Edit Doctor')
 
 @push('style')
     <!-- CSS Libraries -->
@@ -20,27 +20,28 @@
                 <div class="section-header-breadcrumb">
                     <div class="breadcrumb-item active"><a href="#">Dashboard</a></div>
                     <div class="breadcrumb-item"><a href="#">Forms</a></div>
-                    <div class="breadcrumb-item">Doctors</div>
+                    <div class="breadcrumb-item">Edit Doctor</div>
                 </div>
             </div>
 
             <div class="section-body">
-                <h2 class="section-title">Doctor Schedule</h2>
+                <h2 class="section-title">Edit Doctor</h2>
 
                 <div class="card">
-                    <form action="{{ route('doctors.store') }}" method="POST">
+                    <form action="{{ route('doctors.update', ['doctor' => $doctor->doctor_sip]) }}" method="POST">
                         @csrf
+                        @method('PUT')
                         <div class="card-header">
                             <h4>Input Text</h4>
                         </div>
                         <div class="card-body">
                             <div class="form-group">
                                 <label>Name</label>
-                                <input type="text"
+                                <input type="text" name="doctor_name"
                                     class="form-control @error('doctor_name')
                                 is-invalid
                             @enderror"
-                                    name="doctor_name">
+                                    value="{{ $doctor->doctor_name }}">
                                 @error('doctor_name')
                                     <div class="invalid-feedback">
                                         {{ $message }}
@@ -49,11 +50,11 @@
                             </div>
                             <div class="form-group">
                                 <label>Spesialist</label>
-                                <input type="text"
+                                <input type="text" name="doctor_specialis"
                                     class="form-control @error('doctor_specialis')
                                 is-invalid
                             @enderror"
-                                    name="doctor_specialis">
+                                    value="{{ $doctor->doctor_specialis }}">
                                 @error('doctor_specialis')
                                     <div class="invalid-feedback">
                                         {{ $message }}
@@ -62,11 +63,11 @@
                             </div>
                             <div class="form-group">
                                 <label>Phone</label>
-                                <input type="number"
+                                <input type="number" name="doctor_phone"
                                     class="form-control @error('doctor_phone')
                                 is-invalid
                             @enderror"
-                                    name="doctor_phone">
+                                    value="{{ $doctor->doctor_phone }}">
                                 @error('doctor_phone')
                                     <div class="invalid-feedback">
                                         {{ $message }}
@@ -75,11 +76,11 @@
                             </div>
                             <div class="form-group">
                                 <label>Email</label>
-                                <input type="email"
+                                <input type="email" name="doctor_email"
                                     class="form-control @error('doctor_email')
                                 is-invalid
                             @enderror"
-                                    name="doctor_email">
+                                    value="{{ $doctor->doctor_name }}">
                                 @error('doctor_email')
                                     <div class="invalid-feedback">
                                         {{ $message }}
@@ -89,7 +90,6 @@
 
                             <div class="form-group">
                                 <label class="form-label">Photo</label>
-
                                 <input type="file" class="form-control" name="doctor_photo"
                                     @error('doctor_photo') is-invalid @enderror>
 
@@ -102,11 +102,11 @@
 
                             <div class="form-group">
                                 <label>Address</label>
-                                <input type="text"
+                                <input type="text" name="doctor_address"
                                     class="form-control @error('doctor_address')
                                 is-invalid
                             @enderror"
-                                    name="doctor_address">
+                                    value="{{ $doctor->doctor_address }}">
                                 @error('doctor_address')
                                     <div class="invalid-feedback">
                                         {{ $message }}
@@ -116,11 +116,11 @@
 
                             <div class="form-group">
                                 <label>SIP</label>
-                                <input type="text"
+                                <input type="text" name="doctor_sip"
                                     class="form-control @error('doctor_sip')
                                 is-invalid
                             @enderror"
-                                    name="doctor_sip">
+                                    value="{{ $doctor->doctor_sip }}">
                                 @error('doctor_sip')
                                     <div class="invalid-feedback">
                                         {{ $message }}
@@ -130,11 +130,11 @@
 
                             <div class="form-group">
                                 <label>ID IHS</label>
-                                <input type="text"
+                                <input type="text" name="id_ihs"
                                     class="form-control @error('id_ihs')
                                 is-invalid
                             @enderror"
-                                    name="id_ihs">
+                                    value="{{ $doctor->id_ihs }}">
                                 @error('id_ihs')
                                     <div class="invalid-feedback">
                                         {{ $message }}
@@ -144,11 +144,11 @@
 
                             <div class="form-group">
                                 <label>NIK</label>
-                                <input type="text"
+                                <input type="text" name="nik"
                                     class="form-control @error('nik')
                                 is-invalid
                             @enderror"
-                                    name="nik">
+                                    value="{{ $doctor->nik }}">
                                 @error('nik')
                                     <div class="invalid-feedback">
                                         {{ $message }}
@@ -156,7 +156,6 @@
                                 @enderror
                             </div>
                         </div>
-
                         <div class="card-footer text-right">
                             <button class="btn btn-primary">Submit</button>
                         </div>

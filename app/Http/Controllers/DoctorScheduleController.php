@@ -45,7 +45,7 @@ class DoctorScheduleController extends Controller
          $doctorSchedule->note = $request->note;
          $doctorSchedule->save();
 
-         return redirect()->route('doctor-schedule.index');
+         return redirect()->route('doctor_schedule.index');
      }
 
      //edit
@@ -73,13 +73,13 @@ class DoctorScheduleController extends Controller
          $doctorSchedule->note = $request->note;
          $doctorSchedule->save();
 
-         return redirect()->route('doctor-schedule.index');
+         return redirect()->route('doctor_schedule.index')->with('success', 'Doctor schedule been updated!');
      }
 
      //destroy
      public function destroy($id)
      {
          DoctorSchedule::find($id)->delete();
-         return redirect()->route('doctor_schedule.index');
+         return redirect()->route('doctor_schedule.index')->with('success', 'Doctor schedule has been removed!');
      }
 }
