@@ -34,6 +34,10 @@ class DatabaseSeeder extends Seeder
             'phone' => '123456'
         ]);
 
-        $this->call(DoctorSeeder::class, DoctorScheduleSeeder::class,);
+        $this->call(
+            [
+                DoctorSeeder::class, DoctorScheduleSeeder::class, PatientSeeder::class,
+            ]
+        );
     }
 }
