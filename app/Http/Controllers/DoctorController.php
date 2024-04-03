@@ -68,20 +68,20 @@ class DoctorController extends Controller
     {
         $doctor = Doctor::find($id);
 
-        // $doctor = DB::table('doctors')->where('id', $id)->first();
+        $doctor = DB::table('doctors')->where('id', $id)->first();
         return view('pages.doctor.edit', compact('doctor'));
     }
 
     //update
     public function update(Request $request, $id)
     {
-        $request->validate([
-            'doctor_name' => 'required',
-            'doctor_specialist' => 'required',
-            'doctor_phone' => 'required',
-            'doctor_email' => 'required|email',
-            'doctor_sip' => 'required',
-        ]);
+        // $request->validate([
+        //     'doctor_name' => 'required',
+        //     'doctor_specialist' => 'required',
+        //     'doctor_phone' => 'required',
+        //     'doctor_email' => 'required|email',
+        //     'doctor_sip' => 'required',
+        // ]);
 
         // $doctor = Doctor::find($id);
         // $doctor->doctor_name = $request->doctor_name;
@@ -92,15 +92,15 @@ class DoctorController extends Controller
         // $doctor->doctor_sip = $request->doctor_sip;
         // $doctor->save();
 
-        DB::table('doctors')->where('id', $id)->update([
-            'doctor_name' => $request->doctor_name,
-            'doctor_specialist' => $request->doctor_specialist,
-            'doctor_phone' => $request->doctor_phone,
-            'doctor_email' => $request->doctor_email,
-            'doctor_sip' => $request->doctor_sip,
-        ]);
+        // // DB::table('doctors')->where('id', $id)->update([
+        // //     'doctor_name' => $request->doctor_name,
+        // //     'doctor_specialist' => $request->doctor_specialist,
+        // //     'doctor_phone' => $request->doctor_phone,
+        // //     'doctor_email' => $request->doctor_email,
+        // //     'doctor_sip' => $request->doctor_sip,
+        // // ]);
 
-        return redirect()->route('doctors.index')->with('success', 'Doctor updated successfully.');
+        // return redirect()->route('doctors.index')->with('success', 'Doctor updated successfully.');
     }
 
     //destroy

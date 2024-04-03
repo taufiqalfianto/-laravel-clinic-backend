@@ -28,7 +28,7 @@
                 <h2 class="section-title">Edit Doctor</h2>
 
                 <div class="card">
-                    <form action="{{ route('doctors.update', ['doctor' => $doctor->doctor_sip]) }}" method="POST">
+                    <form action="{{ route('doctors.update', $doctor) }}" method="POST">
                         @csrf
                         @method('PUT')
                         <div class="card-header">
@@ -36,6 +36,11 @@
                         </div>
                         <div class="card-body">
                             <div class="form-group">
+                                <label>Names</label>
+                                <input type="text" class="form-control @error('doctor_name') is-invalid @enderror"
+                                    name="time" value="{{ $doctor->doctor_name }}">
+                            </div>
+                            {{-- <div class="form-group">
                                 <label>Name</label>
                                 <input type="text" name="doctor_name"
                                     class="form-control @error('doctor_name')
@@ -47,8 +52,13 @@
                                         {{ $message }}
                                     </div>
                                 @enderror
-                            </div>
+                            </div> --}}
                             <div class="form-group">
+                                <label>Spesialist</label>
+                                <input type="text" class="form-control @error('doctor_specialis') is-invalid @enderror"
+                                    name="time" value="{{ $doctor->doctor_specialis }}">
+                            </div>
+                            {{-- <div class="form-group">
                                 <label>Spesialist</label>
                                 <input type="text" name="doctor_specialis"
                                     class="form-control @error('doctor_specialis')
@@ -60,8 +70,13 @@
                                         {{ $message }}
                                     </div>
                                 @enderror
-                            </div>
+                            </div> --}}
                             <div class="form-group">
+                                <label>Phone</label>
+                                <input type="text" class="form-control @error('doctor_phone') is-invalid @enderror"
+                                    name="time" value="{{ $doctor->doctor_phone }}">
+                            </div>
+                            {{-- <div class="form-group">
                                 <label>Phone</label>
                                 <input type="number" name="doctor_phone"
                                     class="form-control @error('doctor_phone')
@@ -73,8 +88,13 @@
                                         {{ $message }}
                                     </div>
                                 @enderror
-                            </div>
+                            </div> --}}
                             <div class="form-group">
+                                <label>Email</label>
+                                <input type="text" class="form-control @error('doctor_email') is-invalid @enderror"
+                                    name="time" value="{{ $doctor->doctor_email }}">
+                            </div>
+                            {{-- <div class="form-group">
                                 <label>Email</label>
                                 <input type="email" name="doctor_email"
                                     class="form-control @error('doctor_email')
@@ -86,9 +106,13 @@
                                         {{ $message }}
                                     </div>
                                 @enderror
-                            </div>
-
+                            </div> --}}
                             <div class="form-group">
+                                <label>Names</label>
+                                <input type="file" class="form-control @error('doctor_photo') is-invalid @enderror"
+                                    name="time" value="{{ $doctor->doctor_photo }}">
+                            </div>
+                            {{-- <div class="form-group">
                                 <label class="form-label">Photo</label>
                                 <input type="file" class="form-control" name="doctor_photo"
                                     @error('doctor_photo') is-invalid @enderror>
@@ -98,9 +122,13 @@
                                         {{ $message }}
                                     </div>
                                 @enderror
-                            </div>
-
+                            </div> --}}
                             <div class="form-group">
+                                <label>Address</label>
+                                <input type="text" class="form-control @error('doctor_address') is-invalid @enderror"
+                                    name="time" value="{{ $doctor->doctor_address }}">
+                            </div>
+                            {{-- <div class="form-group">
                                 <label>Address</label>
                                 <input type="text" name="doctor_address"
                                     class="form-control @error('doctor_address')
@@ -112,9 +140,13 @@
                                         {{ $message }}
                                     </div>
                                 @enderror
-                            </div>
-
+                            </div> --}}
                             <div class="form-group">
+                                <label>SIP</label>
+                                <input type="text" class="form-control @error('doctor_sip') is-invalid @enderror"
+                                    name="time" value="{{ $doctor->doctor_sip }}">
+                            </div>
+                            {{-- <div class="form-group">
                                 <label>SIP</label>
                                 <input type="text" name="doctor_sip"
                                     class="form-control @error('doctor_sip')
@@ -126,9 +158,13 @@
                                         {{ $message }}
                                     </div>
                                 @enderror
-                            </div>
-
+                            </div> --}}
                             <div class="form-group">
+                                <label>ID IHS</label>
+                                <input type="text" class="form-control @error('id-ihs') is-invalid @enderror"
+                                    name="time" value="{{ $doctor->id_ihs }}">
+                            </div>
+                            {{-- <div class="form-group">
                                 <label>ID IHS</label>
                                 <input type="text" name="id_ihs"
                                     class="form-control @error('id_ihs')
@@ -140,9 +176,13 @@
                                         {{ $message }}
                                     </div>
                                 @enderror
-                            </div>
-
+                            </div> --}}
                             <div class="form-group">
+                                <label>NIK</label>
+                                <input type="text" class="form-control @error('nik') is-invalid @enderror"
+                                    name="time" value="{{ $doctor->nik }}">
+                            </div>
+                            {{-- <div class="form-group">
                                 <label>NIK</label>
                                 <input type="text" name="nik"
                                     class="form-control @error('nik')
@@ -154,7 +194,7 @@
                                         {{ $message }}
                                     </div>
                                 @enderror
-                            </div>
+                            </div> --}}
                         </div>
                         <div class="card-footer text-right">
                             <button class="btn btn-primary">Submit</button>

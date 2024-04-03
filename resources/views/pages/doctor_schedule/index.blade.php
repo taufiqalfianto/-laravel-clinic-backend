@@ -27,7 +27,7 @@
                         @include('layouts.alert')
                     </div>
                 </div>
-                <h2 class="section-title">Doctor</h2>
+                <h2 class="section-title">Doctor Schedules</h2>
                 <p class="section-lead">
                     You can manage all doctors, such as editing, deleting and more.
                 </p>
