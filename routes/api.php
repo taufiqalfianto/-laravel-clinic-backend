@@ -8,6 +8,7 @@ use App\Http\Controllers\Api\DoctorController;
 use App\Http\Controllers\Api\PatientController;
 use App\Http\Controllers\Api\DoctorScheduleController;
 use App\Http\Controllers\Api\ServiceMedicinesController;
+use App\Http\Controllers\Api\PatientScheduleController;
 
 /*
 |--------------------------------------------------------------------------
@@ -41,3 +42,6 @@ Route::apiResource('/api-doctor-schedules', DoctorScheduleController::class)->mi
 
 //service medicines
 Route::apiResource('/api-service-medicines', ServiceMedicinesController::class)->middleware('auth:sanctum');
+
+//patient schedules
+Route::apiResource('/api-patient-schedules', PatientScheduleController::class)->middleware('auth:sanctum');
