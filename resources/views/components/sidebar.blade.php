@@ -26,6 +26,9 @@
                     <li class=''>
                         <a class="nav-link" href="{{ route('doctor_schedule.index') }}">Doctor Schedule</a>
                     </li>
+                    <li class=''>
+                        <a class="nav-link" href="{{ route('patients.index') }}">Patient</a>
+                    </li>
                 </ul>
             </li>
         </ul>

@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\doctorschedule;
+use App\Models\DoctorSchedule;
 use App\Models\Doctor;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -12,7 +12,7 @@ class doctorscheduleController extends Controller
     //index
     public function index(Request $request)
     {
-        $doctorschedule = doctorschedule::with('doctor')
+        $doctorschedule = DoctorSchedule::with('doctor')
         ->when($request->input('doctor_id'), function ($query, $doctor_id) {
             return $query->where('doctor_id', $doctor_id);
         })
