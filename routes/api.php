@@ -29,4 +29,4 @@ Route::post('/login', [AuthController::class, 'login']);
 Route::middleware('auth:sanctum')->post('/logout', [AuthController::class, 'logout']);
 
 //index doctor
-Route::middleware('auth:sanctum')->apiResource("/get-doctors", DoctorController::class);
+Route::middleware('auth:sanctum')->apiResource('/get-doctor', DoctorController::class);
