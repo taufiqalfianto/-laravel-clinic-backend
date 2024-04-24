@@ -20,7 +20,7 @@ class DoctorScheduleFactory extends Factory
             'doctor_id' => \App\Models\Doctor::factory(),
             // day ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
             'day' => $this->faker->randomElement(['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']),
-            'time' => $this->faker->word,
+            'time' => $this->faker->time,
             'status' => $this->faker->word,
             'note' => $this->faker->word,
         ];
