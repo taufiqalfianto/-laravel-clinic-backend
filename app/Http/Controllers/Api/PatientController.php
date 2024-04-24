@@ -13,8 +13,8 @@ class PatientController extends Controller
     public function index(Request $request)
     {
         $patients = DB::table('patients')
-            ->when($request->input('nik'), function ($query, $name) {
-                return $query->where('nik', 'like', '%', $name, '%');
+            ->when($request->input('nik'), function ($query, $nik) {
+                return $query->where('nik', 'like', '%', $nik, '%');
             })
             ->orderBy('id', 'desc')
             ->get();
