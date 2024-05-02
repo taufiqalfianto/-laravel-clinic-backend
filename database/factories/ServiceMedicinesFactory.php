@@ -20,7 +20,7 @@ class ServiceMedicinesFactory extends Factory
             'name' => $this->faker->name,
             'category' => $this->faker->randomElement(['medicine', 'consultation', 'treatment']),
             'price' => $this->faker->randomFloat(2, 0, 999999.99),
-            'quantity' => $this->faker->randomNumber(),
+            'quantity' => $this->faker->numberBetween(1,99),
         ];
     }
 }

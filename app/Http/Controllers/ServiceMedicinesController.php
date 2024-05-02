@@ -16,13 +16,13 @@ class ServiceMedicinesController extends Controller
             ->orderBy('id', 'desc')
             ->paginate(10);
 
-        return view('pages.service_medicines.index', compact('service_medicines'));
+        return view('pages.services_medicine.index', compact('service_medicines'));
     }
 
     //create
     public function create()
     {
-        return view('pages.service_medicines.create');
+        return view('pages.services_medicine.create');
     }
 
     //store
@@ -45,7 +45,7 @@ class ServiceMedicinesController extends Controller
     {
         $service_medicines = \App\Models\ServiceMedicines::find($id);
 
-        return view('pages.service_medicines.edit', compact('service_medicines'));
+        return view('pages.services_medicine.edit', compact('service_medicines'));
     }
 
     //update

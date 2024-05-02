@@ -29,6 +29,9 @@
                     <li class=''>
                         <a class="nav-link" href="{{ route('patients.index') }}">Patient</a>
                     </li>
+                    <li class=''>
+                        <a class="nav-link" href="{{ route('service-medicines.index') }}">Service and Medicines</a>
+                    </li>
                 </ul>
             </li>
         </ul>
