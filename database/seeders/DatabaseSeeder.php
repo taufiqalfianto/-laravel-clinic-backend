@@ -21,11 +21,11 @@ class DatabaseSeeder extends Seeder
         // ]);
 
         \App\Models\User::factory()->create([
-            'name' => 'Admin User',
-            'email' => 'bahri@fic15.com',
+            'name' => 'Test User',
+            'email' => 'fian@mail.com',
             'role' => 'admin',
-            'password' => Hash::make('12345678'),
-            'phone' => '1234567890',
+            'password' => Hash::make('password'),
+            'phone' => '123456'
         ]);
 
         //seeder profile_clinics manual

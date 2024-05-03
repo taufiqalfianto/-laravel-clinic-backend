@@ -31,17 +31,17 @@ Route::post('/login', [AuthController::class, 'login']);
 //logout
 Route::middleware('auth:sanctum')->post('/logout', [AuthController::class, 'logout']);
 
-//doctors
-Route::apiResource('/api-doctors', DoctorController::class)->middleware('auth:sanctum');
+//index doctor
+Route::middleware('auth:sanctum')->apiResource('/get-doctor', DoctorController::class);
 
 //patients
-Route::apiResource('/api-patients', PatientController::class)->middleware('auth:sanctum');
+Route::middleware('auth:sanctum')->apiResource('/get-patients', PatientController::class);
 
-//doctor schedules
-Route::apiResource('/api-doctor-schedules', DoctorScheduleController::class)->middleware('auth:sanctum');
+//doctorschedule
+Route::middleware('auth:sanctum')->apiResource('/get-doctor-schedule', DoctorscheduleController::class);
 
-//service medicines
-Route::apiResource('/api-service-medicines', ServiceMedicinesController::class)->middleware('auth:sanctum');
+//servicemedicine
+Route::middleware('auth:sanctum')->apiResource('/get-service-medicine', ServiceMedicinesController::class);
 
 //patient schedules
 Route::apiResource('/api-patient-schedules', PatientScheduleController::class)->middleware('auth:sanctum');
